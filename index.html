@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HK Academy — Tout notre univers numérique, au même endroit</title>
+<meta name="description" content="Portail central HK Academy : accédez en un clic aux formations informatiques, aux services d'assistance, aux boutiques et aux réseaux sociaux.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230A0E13'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23E8A33D'/%3E%3Ccircle cx='50' cy='16' r='7' fill='%234FD1C5'/%3E%3Ccircle cx='84' cy='50' r='7' fill='%23B98CF2'/%3E%3Ccircle cx='50' cy='84' r='7' fill='%23F17DA6'/%3E%3Ccircle cx='16' cy='50' r='7' fill='%23E8A33D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0E13;
+    --bg-alt:#0D131A;
+    --surface:#141B24;
+    --surface-hi:#1A222D;
+    --border:#232D3A;
+    --border-hi:#33404F;
+    --text:#EDF1F4;
+    --text-dim:#9AA7B4;
+    --text-faint:#5E6C7A;
+    --amber:#E8A33D;
+    --amber-ink:#161006;
+    --teal:#4FD1C5;
+    --violet:#B98CF2;
+    --pink:#F17DA6;
+    --radius:14px;
+    --radius-sm:9px;
+    --maxw:1160px;
+    --font-display:'Space Grotesk',sans-serif;
+    --font-body:'Manrope',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(232,163,61,0.07), transparent),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(79,209,197,0.06), transparent),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{margin:0; padding:0; list-style:none;}
+  h1,h2,h3{font-family:var(--font-display); margin:0; letter-spacing:-0.01em;}
+  p{margin:0;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:''; width:6px; height:6px; border-radius:50%; background:currentColor;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:var(--font-body); font-weight:700; font-size:15px;
+    padding:13px 24px; border-radius:999px; border:1px solid transparent;
+    cursor:pointer; transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+    white-space:nowrap;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--amber); color:var(--amber-ink);}
+  .btn-primary:hover{box-shadow:0 8px 24px -8px rgba(232,163,61,0.55); transform:translateY(-2px);}
+  .btn-ghost{background:transparent; color:var(--text); border-color:var(--border-hi);}
+  .btn-ghost:hover{border-color:var(--amber); color:var(--amber); transform:translateY(-2px);}
+  .btn-block{width:100%;}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:3px; border-radius:6px;}
+
+  /* ---------- HEADER ---------- */
+  .site-header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,14,19,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .header-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; gap:16px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:18px;}
+  .brand-mark{
+    width:34px; height:34px; border-radius:9px;
+    background:linear-gradient(135deg, var(--amber), #b97a1f);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-weight:600; font-size:13px; color:var(--amber-ink);
+    flex-shrink:0;
+  }
+  .brand-sub{display:block; font-family:var(--font-mono); font-weight:400; font-size:11px; color:var(--text-faint); letter-spacing:0.03em;}
+  nav.main-nav{display:flex; gap:6px;}
+  nav.main-nav a{
+    font-size:14.5px; font-weight:600; color:var(--text-dim);
+    padding:9px 14px; border-radius:999px; transition:color .15s ease, background .15s ease;
+  }
+  nav.main-nav a:hover{color:var(--text); background:var(--surface);}
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--border-hi); border-radius:9px;
+    width:42px; height:42px; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
+    content:''; display:block; width:18px; height:2px; background:var(--text); position:relative; transition:.2s;
+  }
+  .nav-toggle span::before{position:absolute; top:-6px;}
+  .nav-toggle span::after{position:absolute; top:6px;}
+
+  @media (max-width:820px){
+    nav.main-nav{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; background:var(--bg-alt); border-bottom:1px solid var(--border);
+      padding:8px 16px 16px; gap:2px;
+      display:none;
+    }
+    nav.main-nav.open{display:flex;}
+    nav.main-nav a{padding:12px 10px; width:100%;}
+    .nav-toggle{display:flex;}
+  }
+
+  /* ---------- SECTION SPACING ---------- */
+  .section{padding:96px 0;}
+  .section-band{background:var(--bg-alt); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
+  .section-head{max-width:640px; margin:0 0 44px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); margin-top:14px;}
+  .section-head p{color:var(--text-dim); margin-top:12px; font-size:16px;}
+  @media (max-width:640px){ .section{padding:64px 0;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:76px 0 40px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center;}
+  .hero h1{font-size:clamp(34px,5.4vw,58px); line-height:1.08; margin-top:18px;}
+  .hero h1 em{font-style:normal; color:var(--amber);}
+  .hero .lede{font-size:18px; color:var(--text-dim); margin-top:20px; max-width:520px;}
+  .hero-actions{display:flex; align-items:center; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .hero-status{
+    display:flex; gap:18px; margin-top:40px; padding-top:24px; border-top:1px solid var(--border);
+    font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint); flex-wrap:wrap;
+  }
+  .hero-status span{display:flex; align-items:center; gap:7px;}
+  .hero-status i{width:6px; height:6px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 3px rgba(79,209,197,0.15); flex-shrink:0;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:36px;}
+    .hero-visual{order:-1;}
+  }
+
+  /* ---------- HUB SVG ---------- */
+  .hub-wrap{position:relative;}
+  .hub-svg text{font-family:var(--font-mono);}
+  .hub-line{stroke:var(--border-hi); stroke-width:1.6; fill:none;}
+  .hub-node circle.ring{fill:var(--surface); stroke:var(--border-hi); stroke-width:1.4;}
+  .hub-node text.label{fill:var(--text-dim); font-size:14px; font-weight:500; text-anchor:middle;}
+  .hub-node text.code{font-size:13px; font-weight:600; text-anchor:middle; dominant-baseline:middle;}
+  .hub-center circle.core{fill:var(--surface-hi); stroke:var(--amber); stroke-width:1.6;}
+  .hub-center text{fill:var(--text); font-size:17px; font-weight:700; text-anchor:middle; dominant-baseline:middle; letter-spacing:0.02em;}
+  .hub-pulse{fill:none; stroke:var(--amber); stroke-width:1.4; opacity:0; transform-origin:340px 210px;
+    animation:pulse 2.8s ease-out infinite;}
+  @keyframes pulse{
+    0%{opacity:.55; transform:scale(1);}
+    100%{opacity:0; transform:scale(1.55);}
+  }
+  .hub-line{stroke-dasharray:6; stroke-dashoffset:0; animation:dash 6s linear infinite;}
+  @keyframes dash{ to{ stroke-dashoffset:-120; } }
+  @media (prefers-reduced-motion: reduce){
+    .hub-pulse{animation:none; opacity:0;}
+    .hub-line{animation:none;}
+  }
+
+  /* ---------- PLATFORM CARDS ---------- */
+  .cards-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:20px;}
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:28px; display:flex; flex-direction:column; gap:16px;
+    transition:transform .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .card:hover{transform:translateY(-4px); background:var(--surface-hi); border-color:var(--card-accent, var(--border-hi));}
+  .card-icon{
+    width:46px; height:46px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+    background:color-mix(in srgb, var(--card-accent) 16%, transparent);
+    border:1px solid color-mix(in srgb, var(--card-accent) 35%, transparent);
+    color:var(--card-accent); flex-shrink:0;
+  }
+  .card-icon svg{width:22px; height:22px;}
+  .card .tag{font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--card-accent);}
+  .card h3{font-size:20px; margin-top:2px;}
+  .card p{color:var(--text-dim); font-size:14.5px; flex-grow:1;}
+  .card--formations{--card-accent:var(--amber);}
+  .card--services{--card-accent:var(--teal);}
+  .card--boutique1, .card--boutique2{--card-accent:var(--violet);}
+  .card--social{--card-accent:var(--pink); grid-column:1 / -1;}
+
+  .social-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:2px;}
+  .social-chip{
+    display:flex; align-items:center; gap:9px; padding:10px 16px; border-radius:999px;
+    background:var(--bg-alt); border:1px solid var(--border); font-size:14px; font-weight:600;
+    transition:border-color .15s ease, transform .15s ease, color .15s ease;
+  }
+  .social-chip:hover{border-color:var(--pink); color:var(--pink); transform:translateY(-2px);}
+  .social-chip svg{width:16px; height:16px;}
+  .social-more{color:var(--text-faint); font-size:13.5px; margin-top:6px;}
+  .social-more a{color:var(--text-dim); text-decoration:underline; text-underline-offset:3px;}
+  .social-more a:hover{color:var(--pink);}
+
+  @media (max-width:760px){
+    .cards-grid{grid-template-columns:1fr;}
+    .card--social{grid-column:auto;}
+  }
+
+  /* ---------- WHY SECTION ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:20px;}
+  .why-item{padding:24px 4px; border-top:2px solid var(--why-accent, var(--amber));}
+  .why-item .eyebrow{color:var(--why-accent, var(--amber));}
+  .why-item h3{font-size:17px; margin-top:10px;}
+  .why-item p{color:var(--text-dim); font-size:14.5px; margin-top:8px;}
+  @media (max-width:900px){ .why-grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:520px){ .why-grid{grid-template-columns:1fr;} }
+
+  /* ---------- HELP BANNER ---------- */
+  .help-banner{
+    max-width:var(--maxw); margin:0 auto; padding:0 24px;
+  }
+  .help-card{
+    background:linear-gradient(135deg, rgba(232,163,61,0.10), rgba(79,209,197,0.06)), var(--surface);
+    border:1px solid var(--border-hi); border-radius:20px;
+    padding:52px 40px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:18px;
+  }
+  .help-card h2{font-size:clamp(24px,3vw,32px); max-width:560px;}
+  .help-card p{color:var(--text-dim); max-width:520px; font-size:16px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--border); background:var(--bg-alt); padding:56px 0 28px; margin-top:20px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px;}
+  .footer-brand p{color:var(--text-dim); font-size:14px; margin-top:12px; max-width:280px;}
+  .footer-contact{margin-top:16px; display:flex; flex-direction:column; gap:6px; font-family:var(--font-mono); font-size:13px; color:var(--text-faint);}
+  .footer-contact a{color:var(--text-dim);}
+  .footer-contact a:hover{color:var(--amber);}
+  .footer-col h4{font-family:var(--font-mono); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint); font-weight:500; margin-bottom:14px;}
+  .footer-col ul{display:flex; flex-direction:column; gap:10px;}
+  .footer-col a{color:var(--text-dim); font-size:14.5px;}
+  .footer-col a:hover{color:var(--amber);}
+  .footer-socials{display:flex; gap:10px; margin-top:4px;}
+  .footer-socials a{
+    width:36px; height:36px; border-radius:9px; border:1px solid var(--border-hi);
+    display:flex; align-items:center; justify-content:center; color:var(--text-dim);
+  }
+  .footer-socials a:hover{color:var(--pink); border-color:var(--pink);}
+  .footer-socials svg{width:16px; height:16px;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    margin-top:48px; padding-top:24px; border-top:1px solid var(--border);
+    font-size:13px; color:var(--text-faint);
+  }
+  @media (max-width:760px){
+    .footer-grid{grid-template-columns:1fr 1fr; gap:32px 24px;}
+    .footer-brand{grid-column:1 / -1;}
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1; transform:none;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner wrap">
+    <a href="#accueil" class="brand">
+      <span class="brand-mark">HK</span>
+      <span>
+        HK Academy
+        <span class="brand-sub">portail·central</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span>
+    </button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#accueil">Accueil</a>
+      <a href="#formations">Formations</a>
+      <a href="#services">Services</a>
+      <a href="#boutiques">Boutiques</a>
+      <a href="#reseaux">Réseaux sociaux</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section id="accueil" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Un seul accès, tout l'écosystème</span>
+        <h1>Tout notre univers numérique, <em>au même endroit.</em></h1>
+        <p class="lede">Formations, services informatiques, boutiques et réseaux sociaux : retrouvez facilement toutes nos plateformes à partir d'un seul espace.</p>
+        <div class="hero-actions">
+          <a href="#plateformes" class="btn btn-primary">Découvrir nos plateformes</a>
+          <a href="#contact" class="btn btn-ghost">Besoin d'aide ?</a>
+        </div>
+        <div class="hero-status">
+          <span><i></i>Formations</span>
+          <span><i></i>Services</span>
+          <span><i></i>Boutiques</span>
+          <span><i></i>Réseaux sociaux</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hub-wrap">
+          <svg class="hub-svg" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schéma représentant HK Academy au centre, relié aux formations, services, boutiques et réseaux sociaux">
+            <line class="hub-line" x1="340" y1="210" x2="150" y2="108"></line>
+            <line class="hub-line" x1="340" y1="210" x2="530" y2="108"></line>
+            <line class="hub-line" x1="340" y1="210" x2="150" y2="322"></line>
+            <line class="hub-line" x1="340" y1="210" x2="530" y2="322"></line>
+
+            <g class="hub-node">
+              <circle class="ring" cx="150" cy="108" r="38"></circle>
+              <text class="code" x="150" y="108" style="fill:var(--amber)">FORM</text>
+              <text class="label" x="150" y="164">Formations</text>
+            </g>
+            <g class="hub-node">
+              <circle class="ring" cx="530" cy="108" r="38"></circle>
+              <text class="code" x="530" y="108" style="fill:var(--teal)">SERV</text>
+              <text class="label" x="530" y="164">Services</text>
+            </g>
+            <g class="hub-node">
+              <circle class="ring" cx="150" cy="322" r="38"></circle>
+              <text class="code" x="150" y="322" style="fill:var(--violet)">SHOP</text>
+              <text class="label" x="150" y="378">Boutiques</text>
+            </g>
+            <g class="hub-node">
+              <circle class="ring" cx="530" cy="322" r="38"></circle>
+              <text class="code" x="530" y="322" style="fill:var(--pink)">SOC</text>
+              <text class="label" x="530" y="378">Réseaux</text>
+            </g>
+
+            <circle class="hub-pulse" cx="340" cy="210" r="52"></circle>
+            <g class="hub-center">
+              <circle class="core" cx="340" cy="210" r="52"></circle>
+              <text x="340" y="210">HK</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLATEFORMES ============ -->
+  <section id="plateformes" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nos plateformes</span>
+        <h2>Le bon lien, en quelques secondes.</h2>
+        <p>Chaque carte mène directement vers l'une de nos plateformes. Cliquez sur celle qui correspond à votre besoin.</p>
+      </div>
+
+      <div class="cards-grid">
+
+        <!-- Formations -->
+        <article id="formations" class="card card--formations reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+          </div>
+          <div>
+            <span class="tag">Formation</span>
+            <h3>Formations en informatique</h3>
+          </div>
+          <p>Trois modules complets : prise en main de Windows, Pack Office, puis réparation &amp; installation d'un système. En ligne ou à domicile, seul ou en binôme.</p>
+          <!-- 🔗 Lien Formations — à modifier ici -->
+          <a class="btn btn-primary btn-block" href="https://hyacinthekoua54-gif.github.io/Expert/#m03" target="_blank" rel="noopener">Accéder aux formations</a>
+        </article>
+
+        <!-- Services -->
+        <article id="services" class="card card--services reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 1 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/></svg>
+          </div>
+          <div>
+            <span class="tag">Services</span>
+            <h3>Nos services informatiques</h3>
+          </div>
+          <p>Installation, configuration, mise à jour, dépannage et coaching — en présentiel à Bingerville ou entièrement à distance, au forfait.</p>
+          <!-- 🔗 Lien Services — à modifier ici -->
+          <a class="btn btn-primary btn-block" href="https://hyacinthekoua54-gif.github.io/SERVICES/" target="_blank" rel="noopener">Voir nos services et tarifs</a>
+        </article>
+
+        <!-- Boutique 1 -->
+        <article id="boutiques" class="card card--boutique1 reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+          </div>
+          <div>
+            <span class="tag">Boutique</span>
+            <h3>Notre boutique</h3>
+          </div>
+          <p>Découvrez notre première boutique et ses produits et ressources numériques pour progresser en informatique.</p>
+          <!-- 🔗 Lien Boutique 1 — à modifier ici -->
+          <a class="btn btn-primary btn-block" href="https://drndwfwr.mychariow.shop/" target="_blank" rel="noopener">Visiter la boutique</a>
+        </article>
+
+        <!-- Boutique 2 -->
+        <article class="card card--boutique2 reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+          </div>
+          <div>
+            <span class="tag">Boutique</span>
+            <h3>Deuxième boutique</h3>
+          </div>
+          <p>Accédez à notre deuxième boutique pour découvrir une autre sélection de produits et de ressources informatiques.</p>
+          <!-- 🔗 Lien Boutique 2 — à modifier ici -->
+          <a class="btn btn-primary btn-block" href="https://jvumjetu.mychariow.store/" target="_blank" rel="noopener">Visiter la boutique</a>
+        </article>
+
+        <!-- Réseaux sociaux -->
+        <article id="reseaux" class="card card--social reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.8 7.3L3 20l1.3-5A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          </div>
+          <div>
+            <span class="tag">Communauté</span>
+            <h3>Nos réseaux sociaux</h3>
+          </div>
+          <p>Suivez nos actualités, conseils et tutoriels informatiques.</p>
+          <div class="social-row">
+            <!-- 🔗 Lien TikTok — à modifier ici -->
+            <a class="social-chip" href="https://www.tiktok.com/@hyacinthekouaaffoumani25" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.6 4.6 0 0 1-3.3-1.4v9.6a5.3 5.3 0 1 1-4.6-5.2v2.2a3.1 3.1 0 1 0 2.4 3v-11h2.2a4.6 4.6 0 0 0 3.3 3.9v-1.1z"/></svg>
+              TikTok
+            </a>
+            <!-- 🔗 Lien Facebook — à modifier ici -->
+            <a class="social-chip" href="https://www.facebook.com/hyacinthekouaaffoumani" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.4l.4-2.9h-2.8V9c0-.8.2-1.4 1.4-1.4h1.5V5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.1v2.9h2.4V21h3z"/></svg>
+              Facebook
+            </a>
+            <!-- 🔗 Lien YouTube — à modifier ici -->
+            <a class="social-chip" href="https://www.youtube.com/@hyacinthekoua25" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.6a2.7 2.7 0 0 0-1.9-1.9C18 5.2 12 5.2 12 5.2s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.6 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.4 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.4zM10 15V9l5.2 3-5.2 3z"/></svg>
+              YouTube
+            </a>
+            <!-- 🔗 Lien WhatsApp — à modifier ici -->
+            <a class="social-chip" href="https://wa.me/message/AFOWRKVULQH4A1" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3zm0 1.8a7.2 7.2 0 1 1-3.9 13.3l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 0 1 12 4.8zm-3.2 3.6c-.2 0-.5 0-.7.3-.2.2-.9.8-.9 2s.9 2.4 1 2.5c.1.2 1.8 2.8 4.3 3.7 2.1.8 2.5.6 3 .6.4 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.1-.3-.2-.6-.4-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5 0-.1-.6-1.6-.9-2.1-.2-.5-.4-.4-.6-.4z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+          <p class="social-more">Un autre réseau vous manque ? <!-- 🔗 Lien Linktree / autres réseaux — à modifier ici --><a href="https://linktr.ee/hkacademy225" target="_blank" rel="noopener">Voir tous nos liens →</a></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POURQUOI NOUS SUIVRE ============ -->
+  <section class="section section-band">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Notre univers</span>
+        <h2>Pourquoi nous suivre ?</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal" style="--why-accent:var(--amber)">
+          <span class="eyebrow">Formation</span>
+          <h3>Apprendre &amp; progresser</h3>
+          <p>Des formations concrètes pour apprendre et progresser en informatique, à votre rythme.</p>
+        </div>
+        <div class="why-item reveal" style="--why-accent:var(--teal)">
+          <span class="eyebrow">Services</span>
+          <h3>Assistance fiable</h3>
+          <p>Des prestations informatiques accessibles aux particuliers et aux professionnels.</p>
+        </div>
+        <div class="why-item reveal" style="--why-accent:var(--violet)">
+          <span class="eyebrow">Boutiques</span>
+          <h3>Produits &amp; ressources</h3>
+          <p>Des produits et ressources numériques disponibles à travers nos différentes boutiques.</p>
+        </div>
+        <div class="why-item reveal" style="--why-accent:var(--pink)">
+          <span class="eyebrow">Contenu</span>
+          <h3>Conseils réguliers</h3>
+          <p>Des conseils et tutoriels publiés régulièrement sur nos réseaux sociaux.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AIDE / CONTACT ============ -->
+  <section id="contact" class="section">
+    <div class="help-banner reveal">
+      <div class="help-card">
+        <span class="eyebrow">Besoin d'aide ?</span>
+        <h2>Vous ne savez pas quelle plateforme utiliser ?</h2>
+        <p>Contactez-nous et nous vous orienterons vers le service, la formation ou la boutique qui correspond à votre besoin.</p>
+        <!-- 🔗 Lien WhatsApp de contact — à modifier ici -->
+        <a class="btn btn-primary" href="https://wa.me/message/AFOWRKVULQH4A1" target="_blank" rel="noopener">Nous contacter sur WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#accueil" class="brand">
+          <span class="brand-mark">HK</span>
+          <span>HK Academy</span>
+        </a>
+        <p>Votre univers informatique, centralisé : formations, services, boutiques et réseaux sociaux, réunis en un seul endroit.</p>
+        <div class="footer-contact">
+          <!-- 📞 Téléphone / WhatsApp — à modifier ici -->
+          <a href="https://wa.me/message/AFOWRKVULQH4A1" target="_blank" rel="noopener">+225 07 49 69 90 71</a>
+          <span>Bingerville · Côte d'Ivoire</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Liens rapides</h4>
+        <ul>
+          <li><a href="#formations">Formations</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#boutiques">Boutique 1</a></li>
+          <li><a href="https://jvumjetu.mychariow.store/" target="_blank" rel="noopener">Boutique 2</a></li>
+          <li><a href="#reseaux">Réseaux sociaux</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Suivez-nous</h4>
+        <div class="footer-socials">
+          <a href="https://www.tiktok.com/@hyacinthekouaaffoumani25" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.6 4.6 0 0 1-3.3-1.4v9.6a5.3 5.3 0 1 1-4.6-5.2v2.2a3.1 3.1 0 1 0 2.4 3v-11h2.2a4.6 4.6 0 0 0 3.3 3.9v-1.1z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/hyacinthekouaaffoumani" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.4l.4-2.9h-2.8V9c0-.8.2-1.4 1.4-1.4h1.5V5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.1v2.9h2.4V21h3z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@hyacinthekoua25" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.6a2.7 2.7 0 0 0-1.9-1.9C18 5.2 12 5.2 12 5.2s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.6 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.4 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.4zM10 15V9l5.2 3-5.2 3z"/></svg>
+          </a>
+          <a href="https://wa.me/message/AFOWRKVULQH4A1" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3zm0 1.8a7.2 7.2 0 1 1-3.9 13.3l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 0 1 12 4.8zm-3.2 3.6c-.2 0-.5 0-.7.3-.2.2-.9.8-.9 2s.9 2.4 1 2.5c.1.2 1.8 2.8 4.3 3.7 2.1.8 2.5.6 3 .6.4 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.1-.3-.2-.6-.4-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5 0-.1-.6-1.6-.9-2.1-.2-.5-.4-.4-.6-.4z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> HK Academy — Hyacinthe Koua. Tous droits réservés.</span>
+      <span>Bingerville, Côte d'Ivoire</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  navToggle.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mainNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>

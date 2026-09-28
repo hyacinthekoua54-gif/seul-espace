@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Formation intensive Word, Excel & PowerPoint – Abidjan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F5F8FF;--surface:#fff;--ink:#10233F;--muted:#48597A;--line:#D5E1F6;
+  --blue:#0B4FB3;--green:#12813F;--orange:#F0501E;--yellow:#FFD52E;--red:#E0242A;--navy:#0F2A5C;
+  --blue-t:#0B4FB3;--green-t:#12813F;--orange-t:#E8481A;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0A1730;--surface:#12224A;--ink:#EEF3FF;--muted:#AFBEDB;--line:#243A6B;
+  --blue-t:#6AA6FF;--green-t:#3CC172;--orange-t:#FF7F52;--navy:#07122B;}}
+:root[data-theme="dark"]{
+  --bg:#0A1730;--surface:#12224A;--ink:#EEF3FF;--muted:#AFBEDB;--line:#243A6B;
+  --blue-t:#6AA6FF;--green-t:#3CC172;--orange-t:#FF7F52;--navy:#07122B;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 17px/1.6 Montserrat,system-ui,Segoe UI,Arial,sans-serif}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+h2{font-weight:800;font-size:clamp(26px,4vw,36px);line-height:1.15;margin-bottom:24px;color:var(--navy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:var(--ink)}}
+:root[data-theme="dark"] h2{color:var(--ink)}
+.hand{font-family:Caveat,"Segoe Script",cursive;font-weight:700}
+.marker{display:inline-block;background:var(--yellow);color:#0F2A5C;padding:6px 18px;transform:rotate(-1.5deg);clip-path:polygon(0 12%,3% 0,100% 6%,97% 100%,2% 92%);font-weight:800}
+.btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06301A;font-weight:800;text-decoration:none;padding:16px 26px;border-radius:999px;font-size:18px;box-shadow:0 6px 0 #178a43;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(2px);box-shadow:0 4px 0 #178a43}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.btn svg{width:24px;height:24px;fill:currentColor}
+
+/* Hero */
+.hero{padding:44px 0 36px;background:radial-gradient(900px 400px at 85% 0,rgba(11,79,179,.14),transparent 70%)}
+.brush{display:inline-block;background:var(--blue);color:#fff;font-family:Caveat,cursive;font-weight:700;font-size:clamp(28px,5vw,40px);padding:4px 26px 8px;transform:rotate(-2deg);clip-path:polygon(0 10%,2% 0,100% 8%,98% 100%,1% 94%);margin-bottom:14px}
+h1{font-weight:900;font-size:clamp(44px,10vw,92px);line-height:.95;letter-spacing:-.02em}
+h1 .w{color:var(--blue-t)}h1 .x{color:var(--green-t)}h1 .p{color:var(--orange-t)}h1 .a{color:var(--ink);font-size:.7em}
+.lead{font-size:clamp(19px,2.6vw,24px);font-weight:700;margin:22px 0 20px;max-width:26em;color:var(--navy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lead{color:var(--ink)}}
+:root[data-theme="dark"] .lead{color:var(--ink)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;margin-top:28px}
+.hero-cta .hand{font-size:26px;color:var(--orange-t)}
+.apps{display:flex;gap:10px;margin-top:26px}
+.apps i{width:46px;height:46px;border-radius:10px;display:grid;place-items:center;color:#fff;font:900 24px Montserrat,sans-serif;font-style:normal}
+.apps i:nth-child(1){background:var(--blue)}.apps i:nth-child(2){background:var(--green)}.apps i:nth-child(3){background:var(--orange)}
+
+/* Objectifs */
+.cols{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.col{background:var(--surface);border:2px solid var(--line);border-radius:14px;overflow:hidden}
+.col h3{color:#fff;font-size:22px;font-weight:800;padding:14px 20px}
+.col.w h3{background:var(--blue)}.col.x h3{background:var(--green)}.col.p h3{background:var(--orange)}
+.col.w{border-color:var(--blue)}.col.x{border-color:var(--green)}.col.p{border-color:var(--orange)}
+.col ul{padding:16px 20px 20px;display:grid;gap:12px}
+.col li{position:relative;padding-left:28px;font-size:16px;line-height:1.45}
+.col li::before{content:"✓";position:absolute;left:0;top:0;font-weight:900}
+.col.w li::before{color:var(--blue-t)}.col.x li::before{color:var(--green-t)}.col.p li::before{color:var(--orange-t)}
+
+/* Public */
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chips li{background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:10px 20px;font-weight:700;font-size:16px}
+.note{margin-top:22px;font-size:30px;color:var(--blue-t)}
+
+/* Méthode */
+.steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));counter-reset:s}
+.steps li{background:var(--surface);border-left:6px solid var(--blue);border-radius:10px;padding:16px 18px;counter-increment:s}
+.steps li:nth-child(2){border-color:var(--green)}.steps li:nth-child(3){border-color:var(--orange)}.steps li:nth-child(4){border-color:var(--yellow)}
+.steps li::before{content:counter(s);display:block;font-weight:900;font-size:32px;color:var(--muted);line-height:1}
+.steps b{display:block;font-size:20px;margin:4px 0}
+.steps span{font-size:15px;color:var(--muted)}
+
+/* Dates + tarif */
+.infos{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:24px}
+.card h3{font-size:20px;font-weight:800;margin-bottom:14px}
+.dates li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-weight:700}
+.dates li span{color:var(--muted);font-weight:500}
+.dates li:last-child{border:0}
+.meta{margin-top:14px;display:grid;gap:6px;font-size:16px}
+.price{text-align:center;background:linear-gradient(180deg,var(--surface),var(--surface));position:relative;padding-top:44px}
+.ribbon{position:absolute;top:-16px;left:50%;transform:translateX(-50%) rotate(-2deg);background:var(--red);color:#fff;font-weight:900;padding:8px 30px;font-size:19px;clip-path:polygon(0 0,100% 6%,98% 100%,2% 94%)}
+.amount{display:inline-block;background:var(--yellow);color:#0F2A5C;font-weight:900;font-size:clamp(38px,8vw,56px);padding:2px 22px;transform:rotate(-1deg);clip-path:polygon(0 8%,3% 0,100% 4%,97% 100%,1% 94%)}
+.amount small{font-size:.55em}
+.old{display:block;margin:10px 0 16px;color:var(--red);font-weight:800;font-size:20px;text-decoration:line-through}
+.inc{text-align:left;display:grid;gap:8px;margin:0 auto 18px;max-width:340px;font-size:16px}
+.inc li::before{content:"✓ ";color:var(--green-t);font-weight:900}
+.warn{background:var(--red);color:#fff;border-radius:10px;padding:12px 14px;font-size:15px;font-weight:700}
+
+/* Ressources */
+.perks{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.perks .card:nth-child(1){border-color:var(--yellow)}.perks .card:nth-child(2){border-color:var(--green)}
+.perks li{padding:5px 0 5px 22px;position:relative;font-size:16px}
+.perks li::before{content:"•";position:absolute;left:4px;color:var(--orange-t);font-weight:900}
+
+/* CTA final */
+.final{background:var(--navy);color:#fff;text-align:center;padding:64px 0 96px}
+.final h2{color:#fff;margin-bottom:10px}
+.final p{margin-bottom:26px;font-weight:700}
+.final .hand{font-size:30px;color:var(--yellow);display:block;margin-top:26px}
+.tel{display:block;margin-top:16px;color:#fff;font-weight:800;font-size:22px}
+footer{background:var(--navy);color:#C9D6F2;font-size:14px;text-align:center;padding:0 20px calc(28px + env(safe-area-inset-bottom,0px))}
+
+.sticky{display:none}
+@media (max-width:700px){
+  .sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:5;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--navy);text-align:center}
+  .sticky .btn{width:100%;justify-content:center;padding:13px;font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="brush">Formation intensive</span>
+    <h1><span class="w">WORD,</span> <span class="x">EXCEL</span> <span class="a">&amp;</span><br><span class="p">POWERPOINT</span></h1>
+    <p class="lead">Maîtrisez les outils bureautiques essentiels pour le travail en entreprise.</p>
+    <span class="marker">4 séances &nbsp;|&nbsp; 24 heures de formation</span>
+    <div class="hero-cta">
+      <a class="btn" href="https://wa.me/2250749699071?text=Bonjour%2C%20je%20souhaite%20m%27inscrire%20%C3%A0%20la%20formation%20Word%2C%20Excel%20%26%20PowerPoint." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+        S'inscrire sur WhatsApp
+      </a>
+      <span class="hand">Apprenez. Pratiquez. Devenez autonome.</span>
+    </div>
+    <div class="apps" aria-hidden="true"><i>W</i><i>X</i><i>P</i></div>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <h2>À la fin de la formation, vous serez capable de…</h2>
+    <div class="cols">
+      <div class="col w">
+        <h3>Word</h3>
+        <ul>
+          <li>Créer et mettre en forme des documents professionnels.</li>
+          <li>Rédiger lettres, rapports, comptes rendus et documents administratifs.</li>
+          <li>Utiliser le publipostage pour produire rapidement plusieurs courriers personnalisés.</li>
+          <li>Structurer un document avec styles, tableaux, en-têtes et pieds de page.</li>
+          <li>Préparer un document prêt à être imprimé ou envoyé en PDF.</li>
+        </ul>
+      </div>
+      <div class="col x">
+        <h3>Excel</h3>
+        <ul>
+          <li>Créer et organiser des tableaux professionnels.</li>
+          <li>Utiliser les formules et fonctions essentielles.</li>
+          <li>Trier, filtrer et analyser des données.</li>
+          <li>Créer des outils de gestion : budgets, ventes, stocks, suivis.</li>
+          <li>Présenter vos résultats avec des graphiques.</li>
+        </ul>
+      </div>
+      <div class="col p">
+        <h3>PowerPoint</h3>
+        <ul>
+          <li>Créer une présentation professionnelle.</li>
+          <li>Organiser efficacement les informations sur les diapositives.</li>
+          <li>Insérer et mettre en forme textes, images, tableaux et graphiques.</li>
+          <li>Utiliser les transitions et animations.</li>
+          <li>Préparer un support pour présenter un projet, une entreprise ou un rapport.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Une formation adaptée à vos besoins</h2>
+    <ul class="chips">
+      <li>Débutants (les bases)</li>
+      <li>Intermédiaires (renforcer vos acquis)</li>
+      <li>Étudiants et jeunes diplômés</li>
+      <li>Chercheurs d'emploi</li>
+      <li>Secrétaires et assistant(e)s</li>
+      <li>Entrepreneurs</li>
+      <li>Salariés</li>
+    </ul>
+    <p class="note hand">Pas besoin d'être un expert en informatique !</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Une formation orientée pratique</h2>
+    <p style="max-width:40em;margin-bottom:22px;color:var(--muted)">Pas de simple visite des boutons : vous travaillez sur des exercices et des situations inspirés du travail en entreprise.</p>
+    <ul class="steps">
+      <li><b>Apprendre</b><span>Les notions essentielles, sans jargon.</span></li>
+      <li><b>Pratiquer</b><span>Exercices guidés sur chaque logiciel.</span></li>
+      <li><b>Réaliser</b><span>Une vraie tâche professionnelle de bout en bout.</span></li>
+      <li><b>Devenir autonome</b><span>Vous savez le refaire seul(e) au bureau.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="infos" style="padding-top:0">
+  <div class="wrap infos">
+    <div class="card">
+      <h3>Dates des 4 séances</h3>
+      <ul class="dates">
+        <li>1ère séance <span>Samedi 7 novembre 2026</span></li>
+        <li>2ème séance <span>Samedi 14 novembre 2026</span></li>
+        <li>3ème séance <span>Samedi 21 novembre 2026</span></li>
+        <li>4ème séance <span>Samedi 28 novembre 2026</span></li>
+      </ul>
+      <div class="meta">
+        <p><b>Heure :</b> 10h30 à chaque séance</p>
+        <p><b>Lieu :</b> Université Félix Houphouët-Boigny</p>
+      </div>
+    </div>
+    <div class="card price">
+      <span class="ribbon">Tarif réduit</span>
+      <span class="amount">50 000 <small>FCFA</small></span>
+      <span class="old">70 000 FCFA</span>
+      <ul class="inc">
+        <li>4 séances de formation</li>
+        <li>24 heures de formation</li>
+        <li>Ressources pédagogiques</li>
+        <li>Exercices pratiques</li>
+        <li>Cocktail + plat à chaque séance</li>
+      </ul>
+      <p class="warn">Paiement échelonné possible. À finaliser au plus tard le 1er novembre 2026.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap perks">
+    <div class="card">
+      <h3>Une pause gourmande à chaque séance</h3>
+      <p style="margin-bottom:8px;color:var(--muted);font-size:16px">Détendez-vous, puis reprenez dans de bonnes conditions. Chaque participant reçoit :</p>
+      <ul><li>Un cocktail</li><li>Un plat</li></ul>
+    </div>
+    <div class="card">
+      <h3>Vos ressources de formation</h3>
+      <ul>
+        <li>Supports de formation</li>
+        <li>Exercices pratiques</li>
+        <li>Documents d'entraînement</li>
+        <li>Ressources pour continuer à pratiquer après les séances</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="final" id="inscription">
+  <div class="wrap">
+    <h2>Inscrivez-vous maintenant !</h2>
+    <p>50 000 FCFA · 4 séances · 24 heures de formation<br>Les places sont limitées.</p>
+    <a class="btn" href="https://wa.me/2250749699071?text=Bonjour%2C%20je%20souhaite%20m%27inscrire%20%C3%A0%20la%20formation%20Word%2C%20Excel%20%26%20PowerPoint." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+      Écrire sur WhatsApp
+    </a>
+    <a class="tel" href="tel:+2250749699071">+225 074 969 9071</a>
+    <span class="hand">Investissez en vous !</span>
+  </div>
+</section>
+<footer>Une formation pratique · Des outils concrets · Un vrai tremplin pour votre avenir</footer>
+
+<div class="sticky"><a class="btn" href="https://wa.me/2250749699071?text=Bonjour%2C%20je%20souhaite%20m%27inscrire%20%C3%A0%20la%20formation%20Word%2C%20Excel%20%26%20PowerPoint." target="_blank" rel="noopener">S'inscrire sur WhatsApp</a></div>
+</body>
+</html>
